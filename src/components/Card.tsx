@@ -1,5 +1,4 @@
-import {useCallback} from "react";
-import {useIsBookmarked} from "../hooks/use-bookmarks";
+import {useIsBookmarked} from "../app/hooks";
 import Favorite from "./Favorite";
 import BookmarkButton from "./BookmarkButton";
 

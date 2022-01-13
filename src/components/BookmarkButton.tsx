@@ -1,5 +1,5 @@
 import {useCallback} from "react";
-import {useIsBookmarked} from "../hooks/use-bookmarks";
+import {useIsBookmarked} from "../app/hooks";
 
 type BookmarkButtonProps = {
     id: number
