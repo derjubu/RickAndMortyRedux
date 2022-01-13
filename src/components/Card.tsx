@@ -1,6 +1,7 @@
 import {useCallback} from "react";
 import {useIsBookmarked} from "../hooks/use-bookmarks";
 import Favorite from "./Favorite";
+import BookmarkButton from "./BookmarkButton";
 
 type CardProps = {
   name: string
@@ -10,18 +11,14 @@ type CardProps = {
 
 export function Card({ name, image, id }: CardProps): JSX.Element {
 
-  const [isBookmarked, toggle] = useIsBookmarked(id);
-
-    const onToggleBookmark = useCallback(()=>{
-        toggle();
-    }, [ id ]);
+  const [isBookmarked] = useIsBookmarked(id);
 
   return (
     <div>
       <p>{name}</p>
       <img src={image} />
         <Favorite isFavorite={isBookmarked} />
-      <button onClick={onToggleBookmark}>Click Here</button>
+      <BookmarkButton id={id} />
     </div>
   )
 }
