@@ -1,5 +1,6 @@
 import {useCallback} from "react";
 import {useIsBookmarked} from "../hooks/use-bookmarks";
+import Favorite from "./Favorite";
 
 type CardProps = {
   name: string
@@ -19,7 +20,7 @@ export function Card({ name, image, id }: CardProps): JSX.Element {
     <div>
       <p>{name}</p>
       <img src={image} />
-      <p>Favorite? {isBookmarked ? 'yes' : 'no'}</p>
+        <Favorite isFavorite={isBookmarked} />
       <button onClick={onToggleBookmark}>Click Here</button>
     </div>
   )
