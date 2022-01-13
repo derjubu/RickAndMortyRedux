@@ -1,6 +1,5 @@
-import { useAppDispatch, useAppSelector } from '../app/hooks'
-import { toggle } from '../slices/Bookmarks/BookmarksSlice'
 import {useCallback} from "react";
+import {useIsBookmarked} from "../hooks/use-bookmarks";
 
 type CardProps = {
   name: string
@@ -9,18 +8,18 @@ type CardProps = {
 }
 
 export function Card({ name, image, id }: CardProps): JSX.Element {
-  const dispatch = useAppDispatch()
-  const bookmarks = useAppSelector((state) => state.bookmarks)
+
+  const [isBookmarked, toggle] = useIsBookmarked(id);
 
     const onToggleBookmark = useCallback(()=>{
-        dispatch(toggle(id));
+        toggle();
     }, [ id ]);
 
   return (
     <div>
       <p>{name}</p>
       <img src={image} />
-      <p>Favorite? {bookmarks.includes(id) ? 'yes' : 'no'}</p>
+      <p>Favorite? {isBookmarked ? 'yes' : 'no'}</p>
       <button onClick={onToggleBookmark}>Click Here</button>
     </div>
   )
