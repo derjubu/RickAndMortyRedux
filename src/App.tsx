@@ -1,6 +1,5 @@
-import { useAppSelector } from './app/hooks'
-import { Card } from './components/card'
-import { useGetRickAndMortyCharactersQuery } from './slices/RickAndMortyApi/RickAndMortyApiSlice'
+import {Card} from './components/card'
+import {useGetRickAndMortyCharactersQuery} from './slices/RickAndMortyApi/RickAndMortyApiSlice'
 
 function App() {
   const { data, isFetching, error } = useGetRickAndMortyCharactersQuery(1)
