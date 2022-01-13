@@ -1,4 +1,3 @@
-import {useIsBookmarked} from "../app/hooks";
 import Favorite from "./Favorite";
 import BookmarkButton from "./BookmarkButton";
 
@@ -10,13 +9,11 @@ type CardProps = {
 
 export function Card({name, image, id}: CardProps): JSX.Element {
 
-    const [isBookmarked] = useIsBookmarked(id);
-
     return (
         <div>
             <p>{name}</p>
             <img src={image}/>
-            <Favorite isFavorite={isBookmarked}/>
+            <Favorite id={id}/>
             <BookmarkButton id={id}/>
         </div>
     )

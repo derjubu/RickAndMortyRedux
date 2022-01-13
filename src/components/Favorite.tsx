@@ -1,8 +1,10 @@
+import {useIsBookmarked} from "../app/hooks";
 
 type FavoriteProps = {
-    isFavorite: boolean
+    id: number
 }
 
-export default function Favorite({isFavorite}: FavoriteProps): JSX.Element {
-    return <p>Favorite? {isFavorite ? 'yes' : 'no'}</p>
+export default function Favorite({id}: FavoriteProps): JSX.Element {
+    const [isBookmarked] = useIsBookmarked(id);
+    return <p>Favorite? {isBookmarked ? 'yes' : 'no'}</p>
 }
