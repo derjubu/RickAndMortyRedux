@@ -1,6 +1,6 @@
-import {Card} from './components/Card'
 import {useGetRickAndMortyCharactersQuery} from './slices/RickAndMortyApi/RickAndMortyApiSlice'
 import {Character} from "./app/types";
+import {CharacterCard} from "./components/CharacterCard";
 
 function App() {
   const { data, isFetching, error } = useGetRickAndMortyCharactersQuery(1)
@@ -18,11 +18,9 @@ function App() {
   return (
     <div>
       {characters.map((character) => (
-        <Card
-          key={character.id}
-          id={character.id}
-          name={character.name}
-          image={character.image}
+        <CharacterCard
+            key={character.id}
+            character={character}
         />
       ))}
     </div>
