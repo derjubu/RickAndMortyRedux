@@ -9,10 +9,10 @@ const BookmarkButton = (
     {id}: BookmarkButtonProps
 ) => {
 
-    const [isBookmarked, toggle] = useIsBookmarked(id);
+    const [isBookmarked, toggleBookmarked] = useIsBookmarked(id);
 
     const onToggleBookmark = useCallback(() => {
-        toggle();
+        toggleBookmarked();
     }, [id]);
 
     return <button onClick={onToggleBookmark}>
