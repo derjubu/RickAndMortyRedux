@@ -18,7 +18,6 @@ export function FavouriteComponent({
 
   function toggleFavouriteCharacter(id: number) {
     dispatch(toggleFavourite(id))
-    console.log(id)
   }
 
   return (
