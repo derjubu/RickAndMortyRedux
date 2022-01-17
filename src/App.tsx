@@ -1,31 +1,35 @@
-import { useAppSelector } from './app/hooks'
-import { Card } from './components/card'
-import { useGetRickAndMortyCharactersQuery } from './slices/RickAndMortyApi/RickAndMortyApiSlice'
+import { useAppDispatch, useAppSelector } from './app/hooks'
+import { Card } from './components/Card/Card'
+import { Modal } from './components/Modal/Modal'
+import { useGetBooksQuery } from './slices/BooksApi/BooksApi'
+import { toggleModal } from './slices/ShowModal/ShowModalSlice'
+import { bookType } from './types/bookType'
 
 function App() {
-  const { data, isFetching, error } = useGetRickAndMortyCharactersQuery(1)
+  const { data, isFetching } = useGetBooksQuery(10)
+  const modalInfo = useAppSelector((state) => state.Modal)
+  const isModal = modalInfo.value
+  const modalBook = modalInfo.book
+  const dispatch = useAppDispatch()
+  function openModal(book: bookType) {
+    dispatch(toggleModal({ book }))
+  }
 
   if (isFetching) {
-    return <div>Retrieve data</div>
+    return <div>Please wait while fetching data</div>
   }
-
-  if (error) {
-    return <div>An error occured</div>
-  }
-
-  const characters = data.results
-
+  const books = data.data
   return (
-    <div>
-      {characters.map((character: any) => (
-        <Card
-          key={character.id}
-          name={character.name}
-          image={character.image}
-          id={character.id}
-        />
+    <>
+      <h1>Book App</h1>
+      {isModal ? <Modal book={modalBook} /> : null}
+      {books.map((book: bookType) => (
+        <div key={book.id}>
+          <Card book={book} />
+          <button onClick={() => openModal(book)}>Open for {book.title}</button>
+        </div>
       ))}
-    </div>
+    </>
   )
 }
 
