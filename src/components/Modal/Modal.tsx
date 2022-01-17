@@ -1,35 +1,31 @@
-import { useAppDispatch, useAppSelector } from '../../app/hooks'
-import { toggleModal } from '../../slices/showModal/showModalSlice'
-import { FavouriteComponent } from '../FavouriteComponent/FavouriteComponent'
+import { useAppDispatch } from '../../app/hooks'
+import { toggleModal } from '../../slices/ShowModal/ShowModalSlice'
+import { bookType } from '../../types/bookType'
+import { Bookmark } from '../Bookmark/Bookmark'
 import classes from './Modal.module.css'
 
-export function Modal({}): JSX.Element {
-  const dispatch = useAppDispatch()
-  const getCharacter: any = useAppSelector(
-    (state) => state.characterModal.character
-  )
-  const characterModal = getCharacter.character
+type modalProps = {
+  book: bookType
+}
 
-  function closeModal(info: any) {
-    dispatch(toggleModal(info))
+export function Modal({ book }: modalProps): JSX.Element {
+  const dispatch = useAppDispatch()
+  function closeModal() {
+    dispatch(
+      toggleModal({
+        title: '',
+        image: '',
+        id: 0,
+      })
+    )
   }
 
   return (
-    <div className={classes.container}>
-      Modal
-      <h2>{characterModal.name}</h2>
-      <img src={characterModal.image} />
-      <FavouriteComponent character={characterModal} />
-      <button
-        onClick={() =>
-          closeModal({
-            value: false,
-            character: { name: '', image: '', id: 0 },
-          })
-        }
-      >
-        Close Modal
-      </button>
+    <div className={classes.background}>
+      <h2>{book.title}</h2>
+      <Bookmark book={book} />
+      <img src={book.image} height="250px" />
+      <button onClick={() => closeModal()}>Close Modal</button>
     </div>
   )
 }
