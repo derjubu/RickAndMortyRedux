@@ -1,16 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { BooksApi } from '../slices/BooksApi/BooksApi'
-import BookmarksSliceReducer from '../slices/Bookmarks/BookmarksSlice'
+import { RickAndMortyApi } from '../slices/RickAndMortyApi/RickAndMortyApi'
+import FavouritesSliceReducer from '../slices/Favourites/FavouritesSlice'
 import showModalSliceReducer from '../slices/ShowModal/ShowModalSlice'
 
 export const store = configureStore({
   reducer: {
-    [BooksApi.reducerPath]: BooksApi.reducer,
-    Bookmarks: BookmarksSliceReducer,
+    [RickAndMortyApi.reducerPath]: RickAndMortyApi.reducer,
+    Favourites: FavouritesSliceReducer,
     Modal: showModalSliceReducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(BooksApi.middleware),
+    getDefaultMiddleware().concat(RickAndMortyApi.middleware),
 })
 
 //Exporting the type of the store.dispatch function
