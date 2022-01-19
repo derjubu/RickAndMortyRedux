@@ -1,18 +1,20 @@
-import { bookType } from '../../types/bookType'
-import { Bookmark } from '../Bookmark/Bookmark'
-import { Modal } from '../Modal/Modal'
+import { characterType } from '../../types/characterType'
+import { Favourite } from '../Favourite/Favourite'
 import classes from './Card.module.css'
 
 type cardProps = {
-  book: bookType
+  character: characterType
 }
 
-export function Card({ book }: cardProps): JSX.Element {
+export function Card({ character }: cardProps): JSX.Element {
+  const isAlive = character.status
+
   return (
-    <div className={classes.card}>
-      <h2>{book.title}</h2>
-      <Bookmark book={book} />
-      <img src={book.image} height="250px" />
-    </div>
+    <li className={classes.card}>
+      <Favourite character={character} />
+      <img src={character.image} height="250px" />
+      <h2>{character.name}</h2>
+      <p>{isAlive ? '🟢Alive' : '🔴Dead'}</p>
+    </li>
   )
 }

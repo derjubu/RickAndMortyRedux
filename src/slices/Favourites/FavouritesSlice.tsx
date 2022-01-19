@@ -2,11 +2,11 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState: number[] = []
 
-export const BookmarkSlice = createSlice({
-  name: 'bookmarksSlice',
+export const FavouritesSlice = createSlice({
+  name: 'favouritesSlice',
   initialState,
   reducers: {
-    toggleBookmark(state, action) {
+    toggleFavourite(state, action) {
       if (state.includes(action.payload)) {
         return (state = state.filter((id) => id !== action.payload))
       }
@@ -15,5 +15,5 @@ export const BookmarkSlice = createSlice({
   },
 })
 
-export const { toggleBookmark } = BookmarkSlice.actions
-export default BookmarkSlice.reducer
+export const { toggleFavourite } = FavouritesSlice.actions
+export default FavouritesSlice.reducer

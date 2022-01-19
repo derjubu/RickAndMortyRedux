@@ -1,11 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  value: false,
-  book: {
-    title: '',
-    image: '',
+  visible: false,
+  character: {
     id: 0,
+    name: '',
+    image: '',
+    species: '',
+    status: false,
   },
 }
 
@@ -14,13 +16,13 @@ export const showModalSlice = createSlice({
   initialState,
   reducers: {
     toggleModal(state, action) {
-      if (state.value === true) {
+      if (state.visible === true) {
         return (state = {
-          value: false,
-          book: action.payload.book,
+          visible: false,
+          character: action.payload.character,
         })
       }
-      return (state = { value: true, book: action.payload.book })
+      return (state = { visible: true, character: action.payload.character })
     },
   },
 })
