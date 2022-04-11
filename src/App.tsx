@@ -41,12 +41,21 @@ function App() {
   return (
     <>
       <h1>Rick and Morty Universe</h1>
-      {isModal ? <Modal character={modalCharacter} /> : null}
+      <dialog id="dialog">
+        <Modal character={modalCharacter} />
+      </dialog>
+
       {allCharacters.map((character: characterType) => (
         <div key={character.id}>
           <Card character={character} />
-          <button onClick={() => openModal(character)}>
-            Open for {character.name}
+          <button
+            onClick={() => {
+              openModal(character)
+              //@ts-ignore
+              document.getElementById('dialog').showModal()
+            }}
+          >
+            Open for Dialog
           </button>
         </div>
       ))}
