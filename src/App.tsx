@@ -8,8 +8,9 @@ import { receivedCharacterType } from './types/receivedCharacterType'
 
 function App() {
   const { data, isFetching, isError } = useGetCharactersQuery(1)
-  const modalInfo = useAppSelector((state) => state.Modal)
-  const isModal = modalInfo.visible
+  const modalInfo: { character: characterType } = useAppSelector(
+    (state) => state.Modal
+  )
   const modalCharacter = modalInfo.character
   const dispatch = useAppDispatch()
   function openModal(character: characterType) {

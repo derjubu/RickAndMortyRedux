@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  visible: false,
   character: {
     id: 0,
     name: '',
@@ -16,13 +15,9 @@ export const showModalSlice = createSlice({
   initialState,
   reducers: {
     toggleModal(state, action) {
-      if (state.visible === true) {
-        return (state = {
-          visible: false,
-          character: action.payload.character,
-        })
-      }
-      return (state = { visible: true, character: action.payload.character })
+      return (state = {
+        character: action.payload.character,
+      })
     },
   },
 })
