@@ -29,7 +29,7 @@ export function Card({ character }: cardProps): JSX.Element {
         onClick={() => {
           openModal(character)
           //@ts-ignore
-          document.getElementById('dialog').showModal()
+          document.getElementById('dialog').show()
         }}
       >
         Open for Dialog

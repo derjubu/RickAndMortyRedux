@@ -38,10 +38,7 @@ function App() {
   return (
     <>
       <h1>Rick and Morty Universe</h1>
-      <dialog id="dialog">
-        <Modal character={modalCharacter} />
-      </dialog>
-
+      <Modal character={modalCharacter} />
       {allCharacters.map((character: characterType) => (
         <div key={character.id}>
           <Card character={character} />

@@ -1,3 +1,24 @@
+.dialogContainer {
+  ::backdrop {
+    background: azure;
+  }
+  .background::backdrop {
+    background: hotpink;
+  }
+}
+
 .background {
   background-color: peru;
+  border: none;
+  padding: 20px;
+}
+
+.container {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+
+.name {
+  margin: 0;
 }
