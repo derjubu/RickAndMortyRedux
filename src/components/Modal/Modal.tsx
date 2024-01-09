@@ -9,7 +9,7 @@ type modalProps = {
 
 export function Modal({ character }: modalProps): JSX.Element {
   return (
-    <div className={classes.background}>
+    <dialog className={classes.background}>
       <h2>{character.name}</h2>
       <Favourite character={character} />
       <img src={character.image} height="250px" />
@@ -21,6 +21,6 @@ export function Modal({ character }: modalProps): JSX.Element {
       >
         Close Modal
       </button>
-    </div>
+    </dialog>
   )
 }
