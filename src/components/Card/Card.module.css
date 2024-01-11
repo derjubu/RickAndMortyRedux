@@ -1,4 +1,16 @@
 .card {
-  background-color: papayawhip;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background-color: #3a3a3a;
+  color: #f8f8f8;
   list-style: none;
+  width: 280px;
+  h2,
+  p {
+    margin: 0;
+  }
+
+  box-shadow: 4.9px 2.7px 13.4px rgb(0, 177, 200);
 }

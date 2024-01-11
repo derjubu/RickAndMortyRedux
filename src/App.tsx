@@ -39,11 +39,11 @@ function App() {
     <>
       <h1>Rick and Morty Universe</h1>
       <Modal character={modalCharacter} />
-      {allCharacters.map((character: characterType) => (
-        <div key={character.id}>
-          <Card character={character} />
-        </div>
-      ))}
+      <ul>
+        {allCharacters.map((character: characterType) => (
+          <Card character={character} key={character.id} />
+        ))}
+      </ul>
     </>
   )
 }

@@ -1,16 +1,15 @@
 .dialogContainer {
-  ::backdrop {
-    background: azure;
-  }
-  .background::backdrop {
-    background: hotpink;
+  dialog::backdrop {
+    background: rgba(1, 92, 104, 0.616);
   }
 }
 
 .background {
-  background-color: peru;
+  background-color: #3a3a3a;
+  color: #f8f8f8;
   border: none;
   padding: 20px;
+  box-shadow: 4.9px 2.7px 13.4px rgb(0, 177, 200);
 }
 
 .container {
