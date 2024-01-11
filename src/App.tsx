@@ -48,12 +48,13 @@ function App() {
   )
 
   const charsToMap = charFilter ? filteredChars : allCharacters
+  const filterText = charFilter ? 'Show all' : 'Filter'
 
   return (
     <Provider store={store}>
       <>
         <h1>Rick and Morty Universe</h1>
-        <p onClick={() => setCharFilter(!charFilter)}>FILTER</p>
+        <button onClick={() => setCharFilter(!charFilter)}>{filterText}</button>
         <Modal character={modalCharacter} />
         <ul>
           {charsToMap.map((character: characterType) => (
