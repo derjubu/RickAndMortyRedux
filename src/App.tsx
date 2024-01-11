@@ -1,10 +1,13 @@
+import { Provider } from 'react-redux'
 import { useAppSelector } from './app/hooks'
 import { Card } from './components/Card/Card'
 import { Modal } from './components/Modal/Modal'
 import { useGetCharactersQuery } from './slices/RickAndMortyApi/RickAndMortyApi'
+import { store } from './app/store'
 
 import { characterType } from './types/characterType'
 import { receivedCharacterType } from './types/receivedCharacterType'
+import { useState } from 'react'
 
 function App() {
   const { data, isFetching, isError } = useGetCharactersQuery(1)
@@ -12,6 +15,12 @@ function App() {
     (state) => state.Modal
   )
   const modalCharacter = modalInfo.character
+
+  const [charFilter, setCharFilter] = useState(false)
+
+  const favouritesNumbers: number[] = useAppSelector(
+    (state) => state.Favourites
+  )
 
   if (isFetching) {
     return <div>Please wait while fetching data</div>
@@ -32,19 +41,28 @@ function App() {
     )
     return characterData
   }
-
   const allCharacters = mapToCharacters(receivedCharacters)
 
+  const filteredChars = allCharacters.filter((char) =>
+    favouritesNumbers.includes(char.id)
+  )
+
+  const charsToMap = charFilter ? filteredChars : allCharacters
+  const filterText = charFilter ? 'Show all' : 'Filter'
+
   return (
-    <>
-      <h1>Rick and Morty Universe</h1>
-      <Modal character={modalCharacter} />
-      <ul>
-        {allCharacters.map((character: characterType) => (
-          <Card character={character} key={character.id} />
-        ))}
-      </ul>
-    </>
+    <Provider store={store}>
+      <>
+        <h1>Rick and Morty Universe</h1>
+        <button onClick={() => setCharFilter(!charFilter)}>{filterText}</button>
+        <Modal character={modalCharacter} />
+        <ul>
+          {charsToMap.map((character: characterType) => (
+            <Card character={character} key={character.id} />
+          ))}
+        </ul>
+      </>
+    </Provider>
   )
 }
 
