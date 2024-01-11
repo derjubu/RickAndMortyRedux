@@ -4,9 +4,10 @@
   align-items: center;
   gap: 10px;
   background-color: #3a3a3a;
-  color: #f8f8f8;
   list-style: none;
   width: 280px;
+  padding: 20px;
+
   h2,
   p {
     margin: 0;
