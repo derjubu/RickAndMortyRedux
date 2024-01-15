@@ -49,7 +49,6 @@ function App() {
   )
 
   const charsToMap = charFilter ? filteredChars : allCharacters
-  const filterText = charFilter ? 'Show all' : 'Show favourites'
 
   return (
     <Provider store={store}>

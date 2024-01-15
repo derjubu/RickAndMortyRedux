@@ -20,7 +20,8 @@ export function Menu({ charFiltered }: menuProps): JSX.Element {
 
   return (
     <>
-      <h1>Rick and Morty Universe</h1>
+      <h1 className={classes.headline}>Rick and Morty Universe</h1>
+      <p className={classes.subline}>Click on a character for more details.</p>
       <button onClick={() => handleClick()}>{filterText}</button>
     </>
   )

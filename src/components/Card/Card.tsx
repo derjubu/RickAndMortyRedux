@@ -22,18 +22,16 @@ export function Card({ character }: cardProps): JSX.Element {
   return (
     <li className={classes.card}>
       <Favourite character={character} />
-      <img src={character.image} height="250px" />
-      <h2>{character.name}</h2>
-      <p>{isAlive ? '🟢 Alive' : '🔴 Dead'}</p>
-      <button
+      <div
         onClick={() => {
           openModal(character)
           //@ts-ignore
           document.getElementById('dialog').showModal()
         }}
       >
-        Open for Dialog
-      </button>
+        <img src={character.image} height="250px" />
+        <h2>{character.name}</h2>
+      </div>
     </li>
   )
 }

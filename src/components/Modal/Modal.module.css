@@ -5,6 +5,7 @@
 
   .dialog {
     background-color: #3a3a3a;
+    color: #f8f8f8;
     border: none;
     padding: 20px;
     box-shadow: 4.9px 2.7px 13.4px rgb(0, 177, 200);
@@ -15,6 +16,15 @@
     gap: 20px;
     flex-direction: column;
     align-items: center;
+    position: relative;
+
+    button:nth-child(1) {
+      position: absolute;
+      top: 4px;
+      right: 10px;
+      z-index: 1;
+    }
+
     h2,
     p {
       margin: 0;
