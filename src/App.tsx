@@ -8,6 +8,7 @@ import { store } from './app/store'
 import { characterType } from './types/characterType'
 import { receivedCharacterType } from './types/receivedCharacterType'
 import { useState } from 'react'
+import { Menu } from './components/Menu/Menu'
 
 function App() {
   const { data, isFetching, isError } = useGetCharactersQuery(1)
@@ -16,7 +17,7 @@ function App() {
   )
   const modalCharacter = modalInfo.character
 
-  const [charFilter, setCharFilter] = useState(false)
+  const charFilter: boolean = useAppSelector((state) => state.Filter)
 
   const favouritesNumbers: number[] = useAppSelector(
     (state) => state.Favourites
@@ -48,13 +49,12 @@ function App() {
   )
 
   const charsToMap = charFilter ? filteredChars : allCharacters
-  const filterText = charFilter ? 'Show all' : 'Filter'
+  const filterText = charFilter ? 'Show all' : 'Show favourites'
 
   return (
     <Provider store={store}>
       <>
-        <h1>Rick and Morty Universe</h1>
-        <button onClick={() => setCharFilter(!charFilter)}>{filterText}</button>
+        <Menu charFiltered={charFilter} />
         <Modal character={modalCharacter} />
         <ul>
           {charsToMap.map((character: characterType) => (
