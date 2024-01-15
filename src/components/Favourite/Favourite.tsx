@@ -18,9 +18,11 @@ export function Favourite({ character }: favouriteProps): JSX.Element {
   }
 
   return (
-    <div className={classes.container}>
-      <p>{isFavourite ? 'Bookmarked' : 'Uniteresting'}</p>
-      <button onClick={() => handleClick(character.id)}>Click here</button>
-    </div>
+    <button
+      className={classes.button}
+      onClick={() => handleClick(character.id)}
+    >
+      {isFavourite ? '🧡' : '🤍'}
+    </button>
   )
 }

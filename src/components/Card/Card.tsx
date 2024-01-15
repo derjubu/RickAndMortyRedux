@@ -24,7 +24,7 @@ export function Card({ character }: cardProps): JSX.Element {
       <Favourite character={character} />
       <img src={character.image} height="250px" />
       <h2>{character.name}</h2>
-      <p>{isAlive ? '🟢Alive' : '🔴Dead'}</p>
+      <p>{isAlive ? '🟢 Alive' : '🔴 Dead'}</p>
       <button
         onClick={() => {
           openModal(character)
